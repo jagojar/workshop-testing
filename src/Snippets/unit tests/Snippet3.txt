@@ -1,2 +1,2 @@
 // Act
-            var result = await controller.Create(new NewIdeaModel());
+            var result = await controller.Index();
