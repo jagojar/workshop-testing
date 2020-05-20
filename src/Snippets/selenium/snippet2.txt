@@ -1,0 +1,9 @@
+[TestMethod]
+        public void TestSearch()
+        {
+            driver.Navigate().GoToUrl("http://localhost:1234/");
+            driver.FindElement(By.Id("search-box")).SendKeys("oil");
+            driver.FindElement(By.Id("search-link")).Click();
+
+            Assert.AreEqual(3, driver.FindElement(By.Id("search-page")).FindElements(By.ClassName("list-item-part")).Count);
+        }

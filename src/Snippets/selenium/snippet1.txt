@@ -1,0 +1,29 @@
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System.Linq;
+using OpenQA.Selenium.Firefox;
+
+namespace PartsUnlimited.SeleniumTests
+{
+    [TestClass]
+    public class PartsUnlimitedTests
+    {
+        static IWebDriver driver;
+
+        [AssemblyInitialize]
+        public static void Setup(TestContext context)
+        {
+            var path = Environment.GetEnvironmentVariable("GeckoWebDriver");
+            driver = new FirefoxDriver(path);
+        }
+
+        [AssemblyCleanup]
+        public static void Cleanup()
+        {
+            driver.Quit();
+        }
+
+    }
+}
