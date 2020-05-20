@@ -1,0 +1,18 @@
+[Fact]
+        public async Task IndexPost_ReturnsBadRequestResult_WhenModelStateIsInvalid()
+        {
+            // Arrange
+            var mockRepo = new Mock<IBrainstormSessionRepository>();
+            mockRepo.Setup(repo => repo.ListAsync())
+                .ReturnsAsync(GetTestSessions());
+            var controller = new HomeController(mockRepo.Object);
+            controller.ModelState.AddModelError("SessionName", "Required");
+            var newSession = new HomeController.NewSessionModel();
+
+            // Act
+            var result = await controller.Index(newSession);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.IsType<SerializableError>(badRequestResult.Value);
+        }

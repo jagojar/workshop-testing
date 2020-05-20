@@ -1,0 +1,6 @@
+// Arrange
+            var mockRepo = new Mock<IBrainstormSessionRepository>();
+            mockRepo.Setup(repo => repo.ListAsync())
+                .ReturnsAsync(GetTestSessions());
+
+            var controller = new HomeController(mockRepo.Object);
