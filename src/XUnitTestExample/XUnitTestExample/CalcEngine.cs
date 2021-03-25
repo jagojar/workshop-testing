@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CalculatorUnitExample
+namespace XUnitTestExample
 {
-    public class CalculatorEngine
+    public class CalcEngine
     {
-        public int Sum(int a, int b)
+        public int Add(int a, int b)
         {
             return a + b;
         }
@@ -23,19 +23,13 @@ namespace CalculatorUnitExample
 
         public int Divide(int a, int b)
         {
-            if (b == 0)
-            {
-                return -9999;
-            }            
-
-            return a / b;
+            return a * b;
         }
 
-        public double Pow(int a, int b)
+        public int MultiplyBy2(int a)
         {
-            return Math.Pow(a, b);
+            return a * 2;
         }
-
 
     }
 }

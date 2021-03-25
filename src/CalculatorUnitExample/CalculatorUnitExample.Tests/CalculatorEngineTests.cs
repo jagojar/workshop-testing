@@ -2,21 +2,26 @@ using NUnit.Framework;
 
 namespace CalculatorUnitExample.Tests
 {
-    public class Tests
+    public class CalculatorEngineTests
     {
         private CalculatorEngine calcEngine;
 
         [SetUp]
         public void Setup()
         {
+            //Arrange
             calcEngine = new CalculatorEngine();
         }
 
         [Test]
         public void Sum_3_Plus_4_Result_7()
         {
+            //Arrange
+
+            //Act
             var result = calcEngine.Sum(3, 4);
 
+            //Assert
             Assert.AreEqual(7, result);
         }
 
@@ -42,6 +47,14 @@ namespace CalculatorUnitExample.Tests
             var result = calcEngine.Divide(4, 2);
 
             Assert.AreEqual(2, result);
+        }
+
+        [Test]
+        public void Divide_4_by_0_Result_Is()
+        {
+            var result = calcEngine.Divide(4, 0);
+
+            Assert.AreEqual(-9999, result);
         }
     }
 }
